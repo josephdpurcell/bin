@@ -1,0 +1,5 @@
+MAILTO=josephdpurcell@gmail.com
+0 * * * * /home/joep/bin/sync-drupal-7.x-mailer.sh
+10 * * * * /home/joep/bin/sync-drupal-8.1.x-mailer.sh
+20 * * * * /home/joep/bin/sync-drupal-8.2.x-mailer.sh
+10 */3 * * * /home/joep/bin/mdstat-mailer.sh
