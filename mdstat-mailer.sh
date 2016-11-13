@@ -7,7 +7,19 @@ MDSTAT_DATE=`date`
 # If the log file is not found, there was an error reporting.
 if [ ! -f $MDSTAT_LOG ]
 then
-    echo -e "Failure on: $MDSTAT_DATE\nMissing log file" | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
+    echo -e "Failure on: $MDSTAT_DATE\rMissing log file" | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
+    exit 1
+fi
+
+# If there was an errror reporting there will be no finished notice.
+grep "Finished mdadm report" $MDSTAT_LOG > /dev/null
+if [ $? -ne 0 ]
+then
+    echo $(echo -e "Failure on: $MDSTAT_DATE\rReport failed, contents:\r\r"; cat $MDSTAT_LOG; echo -e "\r\rEnd message") | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
+
+    # Ensure the bup server is still sending us fresh logs.
+    mv $MDSTAT_LOG $MDSTAT_LOG_BAK
+
     exit 1
 fi
 
