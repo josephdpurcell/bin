@@ -15,7 +15,7 @@ fi
 grep "Finished mdadm report" $MDSTAT_LOG > /dev/null
 if [ $? -ne 0 ]
 then
-    echo $(echo -e "Failure on: $MDSTAT_DATE\rReport failed, contents:\r\r"; cat $MDSTAT_LOG; echo -e "\r\rEnd message") | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
+    (echo -e "Failure on: $MDSTAT_DATE\rReport failed, contents:\r\r"; cat $MDSTAT_LOG; echo -e "\r\rEnd message") | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
 
     # Ensure the bup server is still sending us fresh logs.
     mv $MDSTAT_LOG $MDSTAT_LOG_BAK
