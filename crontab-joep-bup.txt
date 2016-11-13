@@ -1,0 +1,2 @@
+MAILTO="josephdpurcell@gmail.com"
+0 */3 * * * /home/joep/bin/mdstat-log-and-scp.sh
