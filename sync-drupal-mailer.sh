@@ -27,6 +27,9 @@ then
         /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: Drupal $DRUPAL_BRANCH Sync NO CHANGE" josephdpurcell@gmail.com
     fi
 else
-    rm $SYNC_LOCK
+    if [ -f $SYNC_LOCK ]
+    then
+        rm $SYNC_LOCK
+    fi
     /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: Drupal $DRUPAL_BRANCH Sync CHANGED" josephdpurcell@gmail.com
 fi
