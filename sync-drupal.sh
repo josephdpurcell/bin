@@ -16,8 +16,25 @@ then
 fi
 
 echo "Starting $DRUPAL sync"
-date
+
+/bin/date
+
 cd $DRUPAL_DIR
-git fetch drupal "$DRUPAL_BRANCH" 2>&1
-git pull --rebase drupal "$DRUPAL_BRANCH" 2>&1
-git push -f origin "$DRUPAL_BRANCH" 2>&1
+
+/usr/bin/git fetch drupal "$DRUPAL_BRANCH" 2>&1
+if [ $? -ne 0 ]
+then
+    exit 1
+fi
+
+/usr/bin/git pull --rebase drupal "$DRUPAL_BRANCH" 2>&1
+if [ $? -ne 0 ]
+then
+    exit 1
+fi
+
+/usr/bin/git push -f origin "$DRUPAL_BRANCH" 2>&1
+if [ $? -ne 0 ]
+then
+    exit 1
+fi

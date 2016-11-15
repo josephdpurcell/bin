@@ -11,6 +11,11 @@ then
 fi
 
 /home/joep/bin/sync-drupal.sh $DRUPAL_BRANCH 2>&1 > $SYNC_LOG
+if [ $? -ne 0 ]
+then
+    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: Drupal $DRUPAL_BRANCH Sync FAILED" josephdpurcell@gmail.com
+    exit 1
+fi
 
 grep "Everything up-to-date" $SYNC_LOG 2>&1 > /dev/null
 if [ $? -eq 0 ]
