@@ -22,9 +22,10 @@
 # m h  dom mon dow   command
 MAILTO=josephdpurcell@gmail.com
 0 * * * * /home/joep/bin/sync-drupal-mailer.sh 7.x
-10 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.1.x
-20 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.2.x
-30 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.3.x
-40 * * * * /home/joep/bin/sync-drupal-mailer.sh 9.x
-10 */3 * * * /home/joep/bin/mdstat-mailer.sh
+10 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.0.x
+20 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.1.x
+30 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.2.x
+40 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.3.x
+50 * * * * /home/joep/bin/sync-drupal-mailer.sh 9.x
 0 6 * * * /home/joep/bin/sync-drupal-remove-locks.sh
+10 */3 * * * /home/joep/bin/mdstat-mailer.sh
