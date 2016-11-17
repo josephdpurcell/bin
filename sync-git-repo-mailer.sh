@@ -3,7 +3,7 @@ GIT_REPO=$1
 GIT_BRANCH=$2
 GIT_DIR="/home/joep/src/github.com/josephdpurcell/$GIT_REPO/"
 SYNC_LOG="/home/joep/logs/sync-"$GIT_BRANCH".log"
-SYNC_LOCK="/tmp/sync-"$GIT_REPO".lock"
+SYNC_LOCK="/tmp/sync-"$GIT_REPO"-git-repo.lock"
 
 if [ -z $GIT_BRANCH ]
 then
