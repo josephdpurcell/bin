@@ -1,39 +1,42 @@
 #!/bin/bash
-DRUPAL_BRANCH=$1
-DRUPAL_DIR="/home/joep/src/github.com/josephdpurcell/drupal-$DRUPAL_BRANCH/"
+GIT_REPO=$1
+GIT_BRANCH=$2
+GIT_DIR="/home/joep/src/github.com/josephdpurcell/$GIT_REPO/"
 
-if [ -z $DRUPAL_BRANCH ]
+if [ -z $GIT_BRANCH ]
 then
-    echo "Usage: sync-drupal.sh [BRANCH]"
-    echo "Example: sync-drupal.sh 8.1.x"
+    echo "Usage: sync-git-repo.sh [REPO] [BRANCH]"
+    echo "Example: sync-git-repo.sh drupal-8.1.x 8.1.x"
     exit 1
 fi
 
-if [ ! -d $DRUPAL_DIR ]
+if [ ! -d $GIT_DIR ]
 then
-    echo "Could not find directory $DRUPAL_DIR"
+    echo "Could not find directory $GIT_DIR"
     exit 1
 fi
 
-echo "Starting $DRUPAL sync"
+echo "Starting $GIT_REPO:$GIT_BRANCH sync"
 
 /bin/date
 
-cd $DRUPAL_DIR
+cd $GIT_DIR
 
-/usr/bin/git fetch drupal "$DRUPAL_BRANCH" 2>&1
+# @todo check for an upstream remote
+
+/usr/bin/git fetch upstream "$GIT_BRANCH" 2>&1
 if [ $? -ne 0 ]
 then
     exit 1
 fi
 
-/usr/bin/git pull --rebase drupal "$DRUPAL_BRANCH" 2>&1
+/usr/bin/git pull --rebase upstream "$GIT_BRANCH" 2>&1
 if [ $? -ne 0 ]
 then
     exit 1
 fi
 
-/usr/bin/git push -f origin "$DRUPAL_BRANCH" 2>&1
+/usr/bin/git push -f origin "$GIT_BRANCH" 2>&1
 if [ $? -ne 0 ]
 then
     exit 1
