@@ -21,15 +21,15 @@
 # 
 # m h  dom mon dow   command
 MAILTO=josephdpurcell@gmail.com
-0 * * * * /home/joep/bin/sync-drupal-mailer.sh 7.x
-5 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.0.x
-10 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.1.x
-15 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.2.x
-20 * * * * /home/joep/bin/sync-drupal-mailer.sh 8.3.x
-25 * * * * /home/joep/bin/sync-drupal-mailer.sh 9.x
-30 * * * * /home/joep/bin/sync-git-repo.sh platform master
-35 * * * * /home/joep/bin/sync-git-repo.sh orocommerce master
-40 * * * * /home/joep/bin/sync-git-repo.sh magento2 develop
-45 * * * * /home/joep/bin/sync-git-repo.sh symfony master
-0 6 * * * /home/joep/bin/sync-drupal-remove-locks.sh
+0 * * * * /home/joep/bin/sync-git-repo-mailer.sh 7.x
+5 * * * * /home/joep/bin/sync-git-repo-mailer.sh 8.0.x
+10 * * * * /home/joep/bin/sync-git-repo-mailer.sh 8.1.x
+15 * * * * /home/joep/bin/sync-git-repo-mailer.sh 8.2.x
+20 * * * * /home/joep/bin/sync-git-repo-mailer.sh 8.3.x
+25 * * * * /home/joep/bin/sync-git-repo-mailer.sh 9.x
+30 * * * * /home/joep/bin/sync-git-repo-mailer.sh platform master
+35 * * * * /home/joep/bin/sync-git-repo-mailer.sh orocommerce master
+40 * * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 master
+45 * * * * /home/joep/bin/sync-git-repo-mailer.sh symfony master
+0 6 * * * /home/joep/bin/sync-git-repo-remove-locks.sh
 10 */3 * * * /home/joep/bin/mdstat-mailer.sh
