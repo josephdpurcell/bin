@@ -29,7 +29,7 @@ MAILTO=josephdpurcell@gmail.com
 25 * * * * /home/joep/bin/sync-git-repo-mailer.sh drupal-9.x 9.x
 30 * * * * /home/joep/bin/sync-git-repo-mailer.sh platform master
 35 * * * * /home/joep/bin/sync-git-repo-mailer.sh orocommerce master
-40 * * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 master
+40 * * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 develop
 45 * * * * /home/joep/bin/sync-git-repo-mailer.sh symfony master
 0 6 * * * /home/joep/bin/sync-git-repo-remove-locks.sh
 10 */3 * * * /home/joep/bin/mdstat-mailer.sh
