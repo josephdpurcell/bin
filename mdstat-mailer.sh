@@ -47,8 +47,8 @@ then
 elif [ $MDADM_IS_FAILED -eq 1 ]
 then
     cat $MDSTAT_LOG | mail -s "CRON: mdstat FAILURE" $MDSTAT_EMAIL
-else
-    cat $MDSTAT_LOG | mail -s "CRON: mdstat NORMAL" $MDSTAT_EMAIL
+#else
+#    cat $MDSTAT_LOG | mail -s "CRON: mdstat NORMAL" $MDSTAT_EMAIL
 fi
 
 # Ensure the bup server is still sending us fresh logs.
