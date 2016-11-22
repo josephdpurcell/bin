@@ -4,6 +4,7 @@ GIT_BRANCH=$2
 GIT_DIR="/home/joep/src/github.com/josephdpurcell/$GIT_REPO/"
 SYNC_LOG="/home/joep/logs/sync-"$GIT_BRANCH".log"
 SYNC_LOCK="/tmp/sync-"$GIT_REPO"-git-repo.lock"
+SYNC_EMAIL="josephdpurcell@gmail.com"
 
 if [ -z $GIT_BRANCH ]
 then
@@ -21,14 +22,14 @@ fi
 /home/joep/bin/sync-git-repo.sh $GIT_REPO $GIT_BRANCH 2>&1 > $SYNC_LOG
 if [ $? -ne 0 ]
 then
-    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync FAILED" josephdpurcell@gmail.com
+    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync FAILED" SYNC_EMAIL
     exit 1
 fi
 
 grep "Everything up-to-date" $SYNC_LOG 2>&1 > /dev/null
 if [ $? -ne 0 ]
 then
-    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync CHANGED" josephdpurcell@gmail.com
+    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync CHANGED" SYNC_EMAIL
 #else
-#    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync NO CHANGE" josephdpurcell@gmail.com
+#    /bin/cat $SYNC_LOG | /usr/bin/mail -s "CRON: $GIT_REPO:$GIT_BRANCH Sync NO CHANGE" SYNC_EMAIL
 fi
