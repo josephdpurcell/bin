@@ -32,4 +32,4 @@ MAILTO=josephdpurcell@gmail.com
 40 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 develop
 45 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh symfony master
 10 */3 * * * /home/joep/bin/mdstat-mailer.sh
-1 * * * * /home/joep/bin/joep-server/mysql-backup.sh
+0 1 * * * /home/joep/bin/joep-server/mysql-backup.sh
