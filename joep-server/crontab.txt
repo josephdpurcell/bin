@@ -33,9 +33,6 @@ BASH_ENV="/home/joep/.bashrc"
 #40 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 develop
 #45 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh symfony master
 #10 */3 * * * /home/joep/bin/mdstat-mailer.sh
-0 1 * * * echo '' > /var/log/joep/mysql-backup-`date "+\%u"`.log
-1 1 * * * /home/joep/bin/joep-server/mysql-backup.sh > /var/log/joep/mysql-backup-`date "+\%u"`.log
-0 2 * * 0 echo '' > /var/log/joep/mysql-bakup-weekly-`date "+\%V"`.log
-1 2 * * 0 /home/joep/bin/joep-server/mysql-backup-weekly.sh > /var/log/joep/mysql-bakup-weekly-`date "+\%V"`.log
-0 3 * * * echo '' > /var/log/joep/b2-backup-`date "+\%u"`.log
-1 3 * * * /home/joep/bin/joep-server/b2-backup.sh > /var/log/joep/b2-backup-`date "+\%u"`.log
+0 1 * * * /home/joep/bin/joep-server/mysql-backup.sh > /var/log/joep/mysql-backup-`date "+\%u"`.log
+0 2 * * 0 /home/joep/bin/joep-server/mysql-backup-weekly.sh > /var/log/joep/mysql-bakup-weekly-`date "+\%V"`.log
+0 3 * * * /home/joep/bin/joep-server/b2-backup.sh > /var/log/joep/b2-backup-`date "+\%u"`.log
