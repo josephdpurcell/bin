@@ -21,8 +21,7 @@
 # 
 # m h  dom mon dow   command
 MAILTO=josephdpurcell@gmail.com
-DOW=$(date '+%u')
-WOY=$(date '+%V')
+BASH_ENV="/home/joep/.bashrc"
 #0 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh drupal-7.x 7.x
 #5 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh drupal-8.0.x 8.0.x
 #10 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh drupal-8.1.x 8.1.x
@@ -34,6 +33,9 @@ WOY=$(date '+%V')
 #40 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh magento2 develop
 #45 */3 * * * /home/joep/bin/sync-git-repo-mailer.sh symfony master
 #10 */3 * * * /home/joep/bin/mdstat-mailer.sh
-0 1 * * * /home/joep/bin/joep-server/mysql-backup.sh > /var/log/joep/mysql-backup-$DOW.log
-0 2 * * 0 /home/joep/bin/joep-server/mysql-backup-weekly.sh > /var/log/joep/mysql-backup-weekly-$WOY.log
-0 3 * * * /home/joep/bin/joep-server/b2-backup.sh > /var/log/joep/b2-backup-$DOW.log
+0 1 * * * echo '' > /var/log/joep/mysql-backup-`date "+\%u"`.log
+1 1 * * * /home/joep/bin/joep-server/mysql-backup.sh > /var/log/joep/mysql-backup-`date "+\%u"`.log
+0 2 * * 0 echo '' > /var/log/joep/mysql-bakup-weekly-`date "+\%V"`.log
+1 2 * * 0 /home/joep/bin/joep-server/mysql-backup-weekly.sh > /var/log/joep/mysql-bakup-weekly-`date "+\%V"`.log
+0 3 * * * echo '' > /var/log/joep/b2-backup-`date "+\%u"`.log
+1 3 * * * /home/joep/bin/joep-server/b2-backup.sh > /var/log/joep/b2-backup-`date "+\%u"`.log
