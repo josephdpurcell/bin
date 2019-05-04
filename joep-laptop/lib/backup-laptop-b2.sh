@@ -10,6 +10,7 @@ echo "Started b2 backup on "$(date)
 # Note: .marks is excluded only because of its symlinks
 # Note: .platform is excluded to avoid symlink recursion
 # Note: .lastpass is excluded to avoid symlinks
+# Note: use --noProgress to avoid cluttering the log
 #b2 sync --excludeRegex '^(.config|.local|.marks|vendor|.cache|VirtualBox VMs|.mozilla)' ~/ b2://josephdpurcell-joep-laptop-dbs/home
-$B2 sync --threads 32 --excludeAllSymlinks --excludeDirRegex '^(.*\.platform|.lastpass|.config|Downloads|.local|.marks|vendor|.cache|VirtualBox VMs|.mozilla)' ~/ b2://josephdpurcell-joep-laptop-dbs/home
+$B2 sync --noProgress --threads 32 --excludeAllSymlinks --excludeDirRegex '^(.*\.platform|.lastpass|.config|Downloads|.local|.marks|vendor|.cache|VirtualBox VMs|.mozilla)' ~/ b2://josephdpurcell-joep-laptop-dbs/home
 echo "Completed b2 backup on "$(date)
