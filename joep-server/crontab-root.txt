@@ -21,4 +21,4 @@
 # 
 # m h  dom mon dow   command
 MAILTO=josephdpurcell@gmail.com
-30 0 * * * tar czvf /var/local/backups/etc/day-`date "+\%u"`-etc.tar.gz /etc/ && chown joep /var/local/backups/etc/*
+30 0 * * * tar czvf /var/local/backups/etc/day-`date "+\%u"`-etc.tar.gz -C / etc/ && chown joep /var/local/backups/etc/*
