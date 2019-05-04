@@ -21,5 +21,8 @@
 # 
 # m h  dom mon dow   command
 MAILTO="josephdpurcell@gmail.com"
-DOW=$(date '+%u')
-*/15 * * * * /home/joep/bin/joep-laptop/backup-laptop.sh > /var/log/joep/b2-backup-$DOW.log
+BASH_ENV="/home/joep/.bashrc"
+# Clear the backup log for the day.
+10 0 * * * echo '' > /var/log/joep/b2-backup-`date "+\%u"`.log
+# Run the backup.
+*/15 * * * * /home/joep/bin/joep-laptop/backup-laptop.sh >> /var/log/joep/b2-backup-`date "+\%u"`.log
