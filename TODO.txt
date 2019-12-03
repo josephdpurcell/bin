@@ -1,2 +1,0 @@
-* Remove the drupal branch specific sync scripts
-* Add a 8.3.x sync to crontab
